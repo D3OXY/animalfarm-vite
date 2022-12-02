@@ -1,3 +1,3 @@
-#Animal Farm
+# Animal Farm
 
-###A Learning Exercise using vite, react.
+### A Learning Exercise using vite, react.
