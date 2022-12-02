@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 //Initialize express
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 app.use(express.json());
 
 //Create some animals

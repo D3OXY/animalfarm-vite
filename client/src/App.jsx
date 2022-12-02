@@ -1,11 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
+  const [animals, setAnimals] = useState([])
+
+  const search =  async (q) => {
+    const response = await fetch('https://api.deoxy.dev?' + new URLSearchParams({q}))
+
+    const data = await response.json();
+    setAnimals(data)
+  }
+
   return (
-    <div className="App">
-    </div>
+    <main>
+      <h1>Animal Farm</h1>
+
+      <input
+        type="text"
+        placeholder='Search for an animal'
+        onChange={e => search(e.target.value)}
+      />
+      
+      <ul>
+        {animals.map(animal => (
+          <li key={animal.id}>
+            <strong>{animal.type}</strong> {animal.name}
+          </li>
+        ))}
+
+        {animals.length === 0 && <li>No animals found</li>}
+      </ul>
+    </main>
   )
 }
 
